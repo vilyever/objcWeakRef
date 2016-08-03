@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FE6401991D51F53C00652BAC /* objcWeakRef.h in Headers */ = {isa = PBXBuildFile; fileRef = FE6401981D51F53C00652BAC /* objcWeakRef.h */; };
+		FE6401991D51F53C00652BAC /* objcWeakRef.h in Headers */ = {isa = PBXBuildFile; fileRef = FE6401981D51F53C00652BAC /* objcWeakRef.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FE6401A01D51F53C00652BAC /* objcWeakRef.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE6401951D51F53B00652BAC /* objcWeakRef.framework */; };
 		FE6401A51D51F53C00652BAC /* objcWeakRefTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FE6401A41D51F53C00652BAC /* objcWeakRefTests.m */; };
+		FE6401B11D51F56300652BAC /* VDWeakRef.h in Headers */ = {isa = PBXBuildFile; fileRef = FE6401AF1D51F56300652BAC /* VDWeakRef.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE6401B21D51F56300652BAC /* VDWeakRef.m in Sources */ = {isa = PBXBuildFile; fileRef = FE6401B01D51F56300652BAC /* VDWeakRef.m */; };
+		FE6401B51D51F76E00652BAC /* objcWeakRef.podspec in Resources */ = {isa = PBXBuildFile; fileRef = FE6401B31D51F76E00652BAC /* objcWeakRef.podspec */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +32,10 @@
 		FE64019F1D51F53C00652BAC /* objcWeakRefTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = objcWeakRefTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE6401A41D51F53C00652BAC /* objcWeakRefTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = objcWeakRefTests.m; sourceTree = "<group>"; };
 		FE6401A61D51F53C00652BAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE6401AF1D51F56300652BAC /* VDWeakRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDWeakRef.h; sourceTree = "<group>"; };
+		FE6401B01D51F56300652BAC /* VDWeakRef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDWeakRef.m; sourceTree = "<group>"; };
+		FE6401B31D51F76E00652BAC /* objcWeakRef.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = objcWeakRef.podspec; sourceTree = "<group>"; };
+		FE6401B41D51F76E00652BAC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +63,8 @@
 				FE6401971D51F53C00652BAC /* objcWeakRef */,
 				FE6401A31D51F53C00652BAC /* objcWeakRefTests */,
 				FE6401961D51F53B00652BAC /* Products */,
+				FE6401B31D51F76E00652BAC /* objcWeakRef.podspec */,
+				FE6401B41D51F76E00652BAC /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +80,8 @@
 		FE6401971D51F53C00652BAC /* objcWeakRef */ = {
 			isa = PBXGroup;
 			children = (
+				FE6401AF1D51F56300652BAC /* VDWeakRef.h */,
+				FE6401B01D51F56300652BAC /* VDWeakRef.m */,
 				FE6401981D51F53C00652BAC /* objcWeakRef.h */,
 				FE64019A1D51F53C00652BAC /* Info.plist */,
 			);
@@ -93,6 +104,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE6401B11D51F56300652BAC /* VDWeakRef.h in Headers */,
 				FE6401991D51F53C00652BAC /* objcWeakRef.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -178,6 +190,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE6401B51D51F76E00652BAC /* objcWeakRef.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE6401B21D51F56300652BAC /* VDWeakRef.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
