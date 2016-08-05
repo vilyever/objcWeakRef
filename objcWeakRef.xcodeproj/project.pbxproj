@@ -392,6 +392,7 @@
 				FE6401AB1D51F53C00652BAC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FE6401AC1D51F53C00652BAC /* Build configuration list for PBXNativeTarget "objcWeakRefTests" */ = {
 			isa = XCConfigurationList;
@@ -400,6 +401,7 @@
 				FE6401AE1D51F53C00652BAC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
