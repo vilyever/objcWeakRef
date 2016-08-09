@@ -21,13 +21,11 @@
 
 #pragma mark Constructor
 + (instancetype)refWithObject:(id)object {
-    VDWeakRef *ref = [self alloc];
-    ref.weakObject = object;
-    return ref;
+    return [[self alloc] initWithObject:object];
 }
 
 - (instancetype)initWithObject:(id)object {
-    self.weakObject = object;
+    _weakObject = object;
     
     return self;
 }
@@ -40,6 +38,11 @@
 
 #pragma mark Overrides
 - (void)forwardInvocation:(NSInvocation *)invocation {
+    if ([NSStringFromSelector(invocation.selector) isEqualToString:NSStringFromSelector(@selector(initWithObject:))]) {
+        [invocation invoke];
+        return;
+    }
+    
     invocation.target = self.weakObject;
     [invocation invoke];
 }
