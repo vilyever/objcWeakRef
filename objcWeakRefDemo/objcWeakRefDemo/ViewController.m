@@ -12,6 +12,8 @@
 
 @interface ViewController ()
 
+@property (nonatomic, strong) VDWeakRef *weakRef;
+
 @end
 
 @implementation ViewController
@@ -20,18 +22,43 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    VDWeakRef *weakRef = [self vd_weakRef];
+    UIViewController *vc = [[UIViewController alloc] init];
+    
+    self.weakRef = [vc vd_weakRef];
+    
+    
     NSLog(@"self %@", self);
-    NSLog(@"weakRef %@", weakRef);
-    NSLog(@"weakRef object %@", weakRef.weakObject);
-
-    id ref = weakRef;
+    NSLog(@"weakRef %@", self.weakRef);
+    NSLog(@"weakRef object %@", self.weakRef.weakObject);
+    
+    
+    id ref = self.weakRef;
     NSLog(@"weakRef isViewLoaded %@", @([ref isViewLoaded]));
     NSLog(@"weakRef window %@", [ref view].window);
     
-    ViewController *controller = (ViewController *)weakRef;
+    ViewController *controller = (ViewController *)self.weakRef;
     NSLog(@"weakRef isViewLoaded %@", @(controller.isViewLoaded));
     NSLog(@"weakRef window %@", controller.view.window);
+        
+    NSLog(@"isKindOfClass %@", @([controller isKindOfClass:[UIViewController class]]));
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    NSLog(@"self %@", self);
+    NSLog(@"weakRef %@", self.weakRef);
+    NSLog(@"weakRef object %@", self.weakRef.weakObject);
+    
+    id ref = self.weakRef;
+    NSLog(@"weakRef isViewLoaded %@", @([ref isViewLoaded]));
+    NSLog(@"weakRef window %@", [ref view].window);
+    
+    ViewController *controller = (ViewController *)self.weakRef;
+    NSLog(@"weakRef isViewLoaded %@", @(controller.isViewLoaded));
+    NSLog(@"weakRef window %@", controller.view.window);
+    
+    NSLog(@"isKindOfClass %@", @([self isEqual:controller]));
 }
 
 - (void)didReceiveMemoryWarning {

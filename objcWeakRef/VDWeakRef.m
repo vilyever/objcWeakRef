@@ -13,6 +13,7 @@
 @interface VDWeakRef ()
 
 @property (nonatomic, weak, readwrite) id weakObject;
+@property (nonatomic, strong) id sampleObject;
 
 @end
 
@@ -25,7 +26,14 @@
 }
 
 - (instancetype)initWithObject:(id)object {
+    if (!object) {
+//        NSAssert(NO, @"VDWeakRef cannot init with nil");
+        NSLog(@"WeakRef cannot init with nil");
+        return nil;
+    }
+    
     _weakObject = object;
+    _sampleObject = [[object class] alloc];
     
     return self;
 }
@@ -38,29 +46,47 @@
 
 #pragma mark Overrides
 - (void)forwardInvocation:(NSInvocation *)invocation {
+    if (!_weakObject) {
+        return;
+    }
+    
     if ([NSStringFromSelector(invocation.selector) isEqualToString:NSStringFromSelector(@selector(initWithObject:))]) {
         [invocation invoke];
         return;
     }
     
-    invocation.target = self.weakObject;
+    if ([NSStringFromSelector(invocation.selector) isEqualToString:NSStringFromSelector(@selector(weakObject))]) {
+        [invocation invoke];
+        return;
+    }
+    
+    if ([NSStringFromSelector(invocation.selector) isEqualToString:NSStringFromSelector(@selector(setWeakObject:))]) {
+        [invocation invoke];
+        return;
+    }
+    
+    invocation.target = _weakObject;
     [invocation invoke];
 }
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)sel {
-    return [self.weakObject methodSignatureForSelector:sel];
+    if (!_weakObject) {
+        return [_sampleObject methodSignatureForSelector:sel];
+    }
+    
+    return [_weakObject methodSignatureForSelector:sel];
 }
 
 - (NSString *)description {
-    return [self.weakObject description];
-}
-
-- (BOOL)respondsToSelector:(SEL)aSelector {
-    return [self.weakObject respondsToSelector:aSelector];
+    if (!_weakObject) {
+        return [super description];
+    }
+    
+    return [_weakObject description];
 }
 
 - (BOOL)isEqual:(id)object {
-    return [self.weakObject isEqual:object];
+    return [_weakObject isEqual:object];
 }
 
 
